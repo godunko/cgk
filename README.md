@@ -11,7 +11,7 @@ Project is divided into few modules:
  Mathematics
  -----------
  
- Not implemented yet.
+ Provides `Vector_2` and `Matrix_2x2` objects and operations on them.
  
  Primitives
  ----------
