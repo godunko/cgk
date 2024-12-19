@@ -14,7 +14,10 @@ project CGK_Primitives is
      ("../source",
       "../source/internals",
       "../source/mathematics",
-      "../source/mathematics/internals");
+      "../source/mathematics/internals",
+      "../source/primitives",
+      "../source/primitives_2d",
+      "../source/primitives_3d");
    for Object_Dir use "../.objs/" & CGK_Common.Target_Name;
 
    package Compiler is
