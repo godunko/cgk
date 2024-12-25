@@ -1,10 +1,12 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 --  Containers of Point_3D objects.
+
+pragma Ada_2022;
 
 with CGK.Internals.Generic_Sequences;
 

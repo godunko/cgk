@@ -6,7 +6,9 @@
 
 --  Containers of Point_2D objects.
 
---  with CGK.Internals.Generic_Sequences;
+pragma Ada_2022;
+
+with CGK.Internals.Generic_Sequences;
 
 package CGK.Primitives.Points_2D.Containers is
 
@@ -20,9 +22,9 @@ package CGK.Primitives.Points_2D.Containers is
 
    type Point_2D_Array is array (Point_2D_Array_Index range <>) of Point_2D;
 
-   --  package Point_2D_Sequences is
-   --    new CGK.Internals.Generic_Sequences (Point_2D_Array_Index, Point_2D);
-   --
-   --  subtype Point_2D_Sequence is Point_2D_Sequences.Sequence;
+   package Point_2D_Sequences is
+     new CGK.Internals.Generic_Sequences (Point_2D_Array_Index, Point_2D);
+
+   subtype Point_2D_Sequence is Point_2D_Sequences.Sequence;
 
 end CGK.Primitives.Points_2D.Containers;

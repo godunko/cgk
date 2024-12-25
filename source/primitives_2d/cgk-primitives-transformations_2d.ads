@@ -6,6 +6,8 @@
 
 --  Transformation in 2D space.
 
+pragma Ada_2022;
+
 private with CGK.Mathematics.Matrices_2x2;
 private with CGK.Mathematics.Vectors_2;
 limited with CGK.Primitives.Points_2D;

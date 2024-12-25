@@ -4,6 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Ada_2022;
+
 with CGK.Reals.Elementary_Functions;
 
 package body CGK.Primitives.XYs is

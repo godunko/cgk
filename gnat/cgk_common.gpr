@@ -11,7 +11,6 @@ abstract project CGK_Common is
    Common_Ada_Compiler_Switches :=
      ("-g",
       "-gnatW8",
-      "-gnat2022",
       "-gnatn2",
       "-O2",
       "-ffunction-sections",

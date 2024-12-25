@@ -4,6 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Ada_2022;
+
 with CGK.Primitives.Transformations_2D;
 with CGK.Primitives.Vectors_2D;
 with CGK.Reals.Elementary_Functions;

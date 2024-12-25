@@ -1,10 +1,12 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 --  Triangulation of a polygon in 2D space, without holes.
+
+pragma Ada_2022;
 
 private with CGK.Internals.Generic_Sequences;
 with CGK.Primitives.Points_2D;

@@ -4,6 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Ada_2022;
+
 with CGK.Mathematics.Matrices_2x2;
 
 package body CGK.Mathematics.Vectors_2 is
