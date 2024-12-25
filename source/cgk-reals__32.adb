@@ -7,6 +7,8 @@
 --  This package is intended to be used with IEEE 32-bit floats on
 --  little-endian processors.
 
+pragma Ada_2022;
+
 package body CGK.Reals is
 
    function Next_After (X : Real; Y: Real) return Real;
