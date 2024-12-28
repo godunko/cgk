@@ -21,5 +21,6 @@ package CGK.Reals is
    --  infinity the same sign as given value.
 
    Real_Vector_2_Alignment : constant := 16;
+   Real_Vector_3_Alignment : constant := 16;
 
 end CGK.Reals;
