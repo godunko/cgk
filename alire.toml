@@ -1,6 +1,6 @@
 name = "cgk"
 description = "Computational Geometry Kernel"
-version = "0.1.0"
+version = "0.2.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
