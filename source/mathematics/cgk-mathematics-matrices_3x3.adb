@@ -65,7 +65,7 @@ package body CGK.Mathematics.Matrices_3x3 is
 
    procedure Set_Identity (Self : out Matrix_3x3) is
    begin
-      Self := [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]];
+      Self := Identity;
    end Set_Identity;
 
 end CGK.Mathematics.Matrices_3x3;
