@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -8,9 +8,7 @@ with CGK.Primitives.Vectors_3D;
 
 package body CGK.Primitives.Points_3D is
 
-   use CGK.Primitives.Vectors_3D;
-   use CGK.Primitives.XYZs;
-   use CGK.Reals;
+   use CGK.Mathematics.Vectors_3;
 
    ---------
    -- "+" --
@@ -20,7 +18,9 @@ package body CGK.Primitives.Points_3D is
      (Left  : Point_3D;
       Right : CGK.Primitives.Vectors_3D.Vector_3D) return Point_3D is
    begin
-      return Point_3D (XYZ (Left) + XYZ (Right));
+      return
+        Point_3D
+          (Vector_3 (Left) + CGK.Primitives.Vectors_3D.As_Vector_3 (Right));
    end "+";
 
    ---------
@@ -31,29 +31,10 @@ package body CGK.Primitives.Points_3D is
      (Left  : Point_3D;
       Right : CGK.Primitives.Vectors_3D.Vector_3D) return Point_3D is
    begin
-      return Point_3D (XYZ (Left) - XYZ (Right));
+      return
+        Point_3D
+          (Vector_3 (Left) - CGK.Primitives.Vectors_3D.As_Vector_3 (Right));
    end "-";
-
-   ---------------------
-   -- Create_Point_3D --
-   ---------------------
-
-   function Create_Point_3D
-     (X : CGK.Reals.Real;
-      Y : CGK.Reals.Real;
-      Z : CGK.Reals.Real) return Point_3D is
-   begin
-      return Create_XYZ (X, Y, Z);
-   end Create_Point_3D;
-
-   ---------------------
-   -- Create_Point_3D --
-   ---------------------
-
-   function Create_Point_3D (XYZ : CGK.Primitives.XYZs.XYZ) return Point_3D is
-   begin
-      return Point_3D (XYZ);
-   end Create_Point_3D;
 
    -------
    -- X --
@@ -61,7 +42,7 @@ package body CGK.Primitives.Points_3D is
 
    function X (Self : Point_3D) return CGK.Reals.Real is
    begin
-      return X (XYZ (Self));
+      return Self (0);
    end X;
 
    ---------
@@ -70,7 +51,7 @@ package body CGK.Primitives.Points_3D is
 
    function XYZ (Self : Point_3D) return CGK.Primitives.XYZs.XYZ is
    begin
-      return CGK.Primitives.XYZs.XYZ (Self);
+      return CGK.Primitives.XYZs.As_XYZ (Vector_3 (Self));
    end XYZ;
 
    -------
@@ -79,7 +60,7 @@ package body CGK.Primitives.Points_3D is
 
    function Y (Self : Point_3D) return CGK.Reals.Real is
    begin
-      return Y (XYZ (Self));
+      return Self (1);
    end Y;
 
    -------
@@ -88,7 +69,7 @@ package body CGK.Primitives.Points_3D is
 
    function Z (Self : Point_3D) return CGK.Reals.Real is
    begin
-      return Z (XYZ (Self));
+      return Self (2);
    end Z;
 
 end CGK.Primitives.Points_3D;

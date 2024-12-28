@@ -1,12 +1,14 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Ada_2022;
+
 package body CGK.Primitives.XYZs is
 
-   use CGK.Reals;
+   use CGK.Mathematics.Vectors_3;
 
    ---------
    -- "+" --
@@ -14,7 +16,7 @@ package body CGK.Primitives.XYZs is
 
    function "+" (Left : XYZ; Right : XYZ) return XYZ is
    begin
-      return (Left.X + Right.X, Left.Y + Right.Y, Left.Z + Right.Z);
+      return XYZ (Vector_3 (Left) + Vector_3 (Right));
    end "+";
 
    ---------
@@ -23,20 +25,8 @@ package body CGK.Primitives.XYZs is
 
    function "-" (Left : XYZ; Right : XYZ) return XYZ is
    begin
-      return (Left.X - Right.X, Left.Y - Right.Y, Left.Z - Right.Z);
+      return XYZ (Vector_3 (Left) - Vector_3 (Right));
    end "-";
-
-   ----------------
-   -- Create_XYZ --
-   ----------------
-
-   function Create_XYZ
-     (X : CGK.Reals.Real;
-      Y : CGK.Reals.Real;
-      Z : CGK.Reals.Real) return XYZ is
-   begin
-      return (X => X, Y => Y, Z => Z);
-   end Create_XYZ;
 
    -------------
    -- Set_XYZ --
@@ -48,7 +38,7 @@ package body CGK.Primitives.XYZs is
       Y    : CGK.Reals.Real;
       Z    : CGK.Reals.Real) is
    begin
-      Self := (X, Y, Z);
+      Self := [X, Y, Z];
    end Set_XYZ;
 
    -------
@@ -57,7 +47,7 @@ package body CGK.Primitives.XYZs is
 
    function X (Self : XYZ) return CGK.Reals.Real is
    begin
-      return Self.X;
+      return Self (0);
    end X;
 
    -------
@@ -66,7 +56,7 @@ package body CGK.Primitives.XYZs is
 
    function Y (Self : XYZ) return CGK.Reals.Real is
    begin
-      return Self.Y;
+      return Self (1);
    end Y;
 
    -------
@@ -75,7 +65,7 @@ package body CGK.Primitives.XYZs is
 
    function Z (Self : XYZ) return CGK.Reals.Real is
    begin
-      return Self.Z;
+      return Self (2);
    end Z;
 
 end CGK.Primitives.XYZs;

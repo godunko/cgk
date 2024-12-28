@@ -90,4 +90,17 @@ package body CGK.Mathematics.Vectors_3 is
       return [for J in Vector_3'Range => Left (J) / Right];
    end "/";
 
+   -------------------
+   -- Cross_Product --
+   -------------------
+
+   function Cross_Product
+     (Left : Vector_3; Right : Vector_3) return Vector_3 is
+   begin
+      return
+        [Left (1) * Right (2) - Left (2) * Right (1),
+         Left (2) * Right (0) - Left (0) * Right (2),
+         Left (0) * Right (1) - Left (1) * Right (0)];
+   end Cross_Product;
+
 end CGK.Mathematics.Vectors_3;

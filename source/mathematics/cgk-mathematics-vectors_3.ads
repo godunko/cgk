@@ -37,4 +37,8 @@ is
      (Left  : CGK.Mathematics.Matrices_3x3.Matrix_3x3;
       Right : Vector_3) return Vector_3 with Inline;
 
+   function Cross_Product
+     (Left : Vector_3; Right : Vector_3) return Vector_3;
+   --  Cross products of 3D vectors represented by arguments.
+
 end CGK.Mathematics.Vectors_3;

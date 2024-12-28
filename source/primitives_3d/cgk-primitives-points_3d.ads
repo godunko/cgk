@@ -1,11 +1,14 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 --  Point in 3D cartesian space.
 
+pragma Ada_2022;
+
+with CGK.Mathematics.Vectors_3;
 limited with CGK.Primitives.Vectors_3D;
 with CGK.Primitives.XYZs;
 with CGK.Reals;
@@ -16,13 +19,16 @@ package CGK.Primitives.Points_3D is
 
    type Point_3D is private;
 
-   function Create_Point_3D
+   function As_Point_3D
      (X : CGK.Reals.Real;
       Y : CGK.Reals.Real;
       Z : CGK.Reals.Real) return Point_3D with Inline;
 
-   function Create_Point_3D
-     (XYZ : CGK.Primitives.XYZs.XYZ) return Point_3D with Inline;
+   function As_Point_3D
+     (Item : CGK.Primitives.XYZs.XYZ) return Point_3D with Inline;
+
+   function As_Vector_3
+     (Self : Point_3D) return CGK.Mathematics.Vectors_3.Vector_3 with Inline;
 
    function X (Self : Point_3D) return CGK.Reals.Real with Inline;
    --  Returns X coordinate.
@@ -48,6 +54,19 @@ package CGK.Primitives.Points_3D is
 
 private
 
-   type Point_3D is new CGK.Primitives.XYZs.XYZ;
+   type Point_3D is new CGK.Mathematics.Vectors_3.Vector_3;
+
+   function As_Point_3D
+     (X : CGK.Reals.Real;
+      Y : CGK.Reals.Real;
+      Z : CGK.Reals.Real) return Point_3D is ([X, Y, Z]);
+
+   function As_Point_3D
+     (Item : CGK.Primitives.XYZs.XYZ) return Point_3D
+        is (Point_3D (CGK.Primitives.XYZs.As_Vector_3 (Item)));
+
+   function As_Vector_3
+     (Self : Point_3D) return CGK.Mathematics.Vectors_3.Vector_3
+        is (CGK.Mathematics.Vectors_3.Vector_3 (Self));
 
 end CGK.Primitives.Points_3D;
