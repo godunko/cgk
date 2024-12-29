@@ -36,6 +36,20 @@ package body CGK.Primitives.Points_3D is
           (Vector_3 (Left) - CGK.Primitives.Vectors_3D.As_Vector_3 (Right));
    end "-";
 
+   ---------------
+   -- Transform --
+   ---------------
+
+   procedure Transform
+     (Self           : in out Point_3D;
+      Transformation : CGK.Primitives.Transformations_3D.Transformation_3D) is
+   begin
+      Self :=
+        Point_3D
+          (CGK.Primitives.Transformations_3D.Transform
+             (Transformation, Vector_3 (Self)));
+   end Transform;
+
    -------
    -- X --
    -------

@@ -9,6 +9,7 @@
 pragma Ada_2022;
 
 with CGK.Mathematics.Vectors_3;
+with CGK.Primitives.Transformations_3D;
 limited with CGK.Primitives.Vectors_3D;
 with CGK.Primitives.XYZs;
 with CGK.Reals;
@@ -51,6 +52,11 @@ package CGK.Primitives.Points_3D is
      (Left  : Point_3D;
       Right : CGK.Primitives.Vectors_3D.Vector_3D)
       return Point_3D with Inline;
+
+   procedure Transform
+     (Self           : in out Point_3D;
+      Transformation : CGK.Primitives.Transformations_3D.Transformation_3D);
+   --  Transform point with given transformation.
 
 private
 
