@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -38,37 +38,6 @@ package body CGK.Primitives.Vectors_2D is
       return (Coordinates => Left.Coordinates / Right);
    end "/";
 
-   ----------------------
-   -- Create_Vector_2D --
-   ----------------------
-
-   function Create_Vector_2D (XY : CGK.Primitives.XYs.XY) return Vector_2D is
-   begin
-      return (Coordinates => XY);
-   end Create_Vector_2D;
-
-   ----------------------
-   -- Create_Vector_2D --
-   ----------------------
-
-   function Create_Vector_2D
-     (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Vector_2D is
-   begin
-      return (Coordinates => Create_XY (X, Y));
-   end Create_Vector_2D;
-
-   ----------------------
-   -- Create_Vector_2D --
-   ----------------------
-
-   function Create_Vector_2D
-     (Point_1 : CGK.Primitives.Points_2D.Point_2D;
-      Point_2 : CGK.Primitives.Points_2D.Point_2D) return Vector_2D is
-   begin
-      return
-        (Coordinates => Points_2D.XY (Point_2) - Points_2D.XY (Point_1));
-   end Create_Vector_2D;
-
    -----------
    -- Cross --
    -----------
@@ -87,6 +56,15 @@ package body CGK.Primitives.Vectors_2D is
    begin
       return Dot_Product (Self.Coordinates, Other.Coordinates);
    end Dot;
+
+   --------------------
+   -- Into_Vector_2D --
+   --------------------
+
+   function Into_Vector_2D
+     (Point_1 : CGK.Primitives.Points_2D.Point_2D;
+      Point_2 : CGK.Primitives.Points_2D.Point_2D) return Vector_2D is
+        (Coordinates => Points_2D.XY (Point_2) - Points_2D.XY (Point_1));
 
    ---------------
    -- Magnitude --

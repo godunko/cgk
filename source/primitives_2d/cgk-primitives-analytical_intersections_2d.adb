@@ -177,7 +177,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
       then
          declare
             A   : constant CGK.Primitives.Vectors_2D.Vector_2D :=
-              Create_Vector_2D (Center (Circle_1), Center (Circle_2));
+              Into_Vector_2D (Center (Circle_1), Center (Circle_2));
             L   : Real;
             H   : Real;
             D   : Real;
@@ -213,7 +213,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
       elsif abs (Dist - Dif) <= Epsilon (Sum) then
           declare
             A  : CGK.Primitives.Vectors_2D.Vector_2D :=
-              Create_Vector_2D (Center (Circle_1), Center (Circle_2));
+              Into_Vector_2D (Center (Circle_1), Center (Circle_2));
             XS : Real;
             YS : Real;
 

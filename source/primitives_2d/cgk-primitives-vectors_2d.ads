@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -10,19 +10,19 @@ with CGK.Primitives.Points_2D;
 with CGK.Primitives.XYs;
 with CGK.Reals;
 
-package CGK.Primitives.Vectors_2D is
-
-   pragma Pure;
+package CGK.Primitives.Vectors_2D
+  with Pure
+is
 
    type Vector_2D is private;
 
-   function Create_Vector_2D (XY : CGK.Primitives.XYs.XY) return Vector_2D
+   function As_Vector_2D (XY : CGK.Primitives.XYs.XY) return Vector_2D
      with Inline;
 
-   function Create_Vector_2D
+   function As_Vector_2D
      (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Vector_2D;
 
-   function Create_Vector_2D
+   function Into_Vector_2D
      (Point_1 : CGK.Primitives.Points_2D.Point_2D;
       Point_2 : CGK.Primitives.Points_2D.Point_2D) return Vector_2D;
    --  Creates a vector from two points.
@@ -65,5 +65,12 @@ private
    type Vector_2D is record
       Coordinates : CGK.Primitives.XYs.XY;
    end record;
+
+   function As_Vector_2D (XY : CGK.Primitives.XYs.XY) return Vector_2D is
+     (Coordinates => XY);
+
+   function As_Vector_2D
+     (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Vector_2D is
+       (Coordinates => CGK.Primitives.XYs.Create_XY (X, Y));
 
 end CGK.Primitives.Vectors_2D;
