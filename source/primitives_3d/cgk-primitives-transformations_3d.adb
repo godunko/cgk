@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -7,7 +7,6 @@
 pragma Ada_2022;
 
 with CGK.Primitives.XYZs;
---  with CGK.Primitives.XYs.Internals;
 with CGK.Reals.Elementary_Functions;
 
 package body CGK.Primitives.Transformations_3D is
@@ -310,52 +309,31 @@ package body CGK.Primitives.Transformations_3D is
          2 => [0 => 0.0, 1 => 0.0, 2 => 1.0]];
    end Set_Rotation_Z;
 
-   --  ------------------
-   --  -- Set_Rotation --
-   --  ------------------
-   --
-   --  procedure Set_Rotation
-   --    (Self  : out Transformation_2D;
-   --     Angle : CGK.Reals.Real) is
-   --  begin
-   --     Self.Kind   := Rotation;
-   --     Set_Rotation (Self.Matrix, Angle);
-   --     Self.Vector := [0.0, 0.0];
-   --  end Set_Rotation;
-   --
-   --  ------------------
-   --  -- Set_Rotation --
-   --  ------------------
-   --
-   --  procedure Set_Rotation
-   --    (Self  : out Transformation_2D;
-   --     Point : CGK.Primitives.Points_2D.Point_2D;
-   --     Angle : CGK.Reals.Real)
-   --  is
-   --     use CGK.Primitives.Points_2D;
-   --
-   --     Vector : constant Vector_2 := To_Vector_2 (XY (Point));
-   --
-   --  begin
-   --     Self.Kind   := Complex;
-   --     Set_Rotation (Self.Matrix, Angle);
-   --     Self.Vector := -Vector;
-   --     Self.Vector := Self.Matrix * @;
-   --     Self.Vector := @ + Vector;
-   --  end Set_Rotation;
-   --
-   --  ---------------------
-   --  -- Set_Translation --
-   --  ---------------------
-   --
-   --  procedure Set_Translation
-   --    (Self   : out Transformation_2D;
-   --     Offset : CGK.Primitives.XYs.XY) is
-   --  begin
-   --     Self.Kind   := Translation;
-   --     Set_Identity (Self.Matrix);
-   --     Self.Vector := To_Vector_2 (Offset);
-   --  end Set_Translation;
+   --------------------
+   -- Set_Rotation_Z --
+   --------------------
+
+   procedure Set_Rotation_Z
+     (Self  : out Transformation_3D;
+      Angle : CGK.Reals.Real) is
+   begin
+      Self.Kind   := Rotation;
+      Set_Rotation_Z (Self.Matrix, Angle);
+      Self.Vector := [0.0, 0.0, 0.0];
+   end Set_Rotation_Z;
+
+   ---------------------
+   -- Set_Translation --
+   ---------------------
+
+   procedure Set_Translation
+     (Self   : out Transformation_3D;
+      Offset : CGK.Primitives.XYZs.XYZ) is
+   begin
+      Self.Kind   := Translation;
+      Set_Identity (Self.Matrix);
+      Self.Vector := CGK.Primitives.XYZs.As_Vector_3 (Offset);
+   end Set_Translation;
 
    ---------------
    -- Transform --

@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -45,22 +45,16 @@ is
    procedure Set_Identity (Self : out Transformation_3D);
    --  Set transformation to identity
 
-   --  procedure Set_Translation
-   --    (Self   : out Transformation_2D;
-   --     Offset : CGK.Primitives.XYs.XY);
-   --  --  Set transformation to translation by given vector.
+   procedure Set_Translation
+     (Self   : out Transformation_3D;
+      Offset : CGK.Primitives.XYZs.XYZ);
+   --  Set transformation to translation by given vector.
 
-   --  procedure Set_Rotation
-   --    (Self  : out Transformation_2D;
-   --     Angle : CGK.Reals.Real);
-   --  --  Set transformation to rotate around origin of the coordinate system by
-   --  --  given angle.
-   --
-   --  procedure Set_Rotation
-   --    (Self  : out Transformation_2D;
-   --     Point : CGK.Primitives.Points_2D.Point_2D;
-   --     Angle : CGK.Reals.Real);
-   --  --  Set transformation to rotate around given point by given angle.
+   procedure Set_Rotation_Z
+     (Self  : out Transformation_3D;
+      Angle : CGK.Reals.Real);
+   --  Set transformation to rotate around Z axis of the coordinate system by
+   --  the given angle.
 
    procedure Multiply
      (Self : in out Transformation_3D;
