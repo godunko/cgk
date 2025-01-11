@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -14,25 +14,6 @@ package body CGK.Primitives.Points_2D is
 
    use CGK.Primitives.XYs;
    use CGK.Reals;
-
-   ---------------------
-   -- Create_Point_2D --
-   ---------------------
-
-   function Create_Point_2D
-     (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Point_2D is
-   begin
-      return (Coordinates => Create_XY (X, Y));
-   end Create_Point_2D;
-
-   ---------------------
-   -- Create_Point_2D --
-   ---------------------
-
-   function Create_Point_2D (XY : CGK.Primitives.XYs.XY) return Point_2D is
-   begin
-      return (Coordinates => XY);
-   end Create_Point_2D;
 
    --------------
    -- Distance --

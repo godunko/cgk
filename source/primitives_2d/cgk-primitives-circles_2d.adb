@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -37,7 +37,7 @@ package body CGK.Primitives.Circles_2D is
       Radius : CGK.Reals.Real) return Circle_2D is
    begin
       return
-        (Center => CGK.Primitives.Points_2D.Create_Point_2D (X, Y),
+        (Center => CGK.Primitives.Points_2D.As_Point_2D (X, Y),
          Radius => Radius);
    end Create_Circle_2D;
 

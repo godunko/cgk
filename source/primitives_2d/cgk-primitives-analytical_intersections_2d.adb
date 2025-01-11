@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -118,7 +118,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
             Swap (XS, YS);
          end if;
 
-         Self.Points (1) := Create_Point_2D (XS, YS);
+         Self.Points (1) := As_Point_2D (XS, YS);
       end if;
    end Intersect;
 
@@ -169,7 +169,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
             Self.Parallel := False;
             Self.Length   := 1;
 
-            Self.Points (1) := Create_Point_2D (XS, YS);
+            Self.Points (1) := As_Point_2D (XS, YS);
          end;
 
       elsif (Sum - Dist) > Epsilon (Sum)
@@ -206,8 +206,8 @@ package body CGK.Primitives.Analytical_Intersections_2D is
             XS2 := X (Center (Circle_1)) + L * X (A) / Dist + H * Y (A) / Dist;
             YS2 := Y (Center (Circle_1)) + L * Y (A) / Dist - H * X (A) / Dist;
 
-            Self.Points (1) := Create_Point_2D (XS1, YS1);
-            Self.Points (2) := Create_Point_2D (XS2, YS2);
+            Self.Points (1) := As_Point_2D (XS1, YS1);
+            Self.Points (2) := As_Point_2D (XS2, YS2);
          end;
 
       elsif abs (Dist - Dif) <= Epsilon (Sum) then
@@ -233,7 +233,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
               (Y (Center (Circle_1)) * R2 - Y (Center (Circle_2)) * R1)
                  / (R2 - R1);
 
-            Self.Points (1) := Create_Point_2D (XS, YS);
+            Self.Points (1) := As_Point_2D (XS, YS);
          end;
 
       else
@@ -279,7 +279,7 @@ package body CGK.Primitives.Analytical_Intersections_2D is
          XS := X (Center (Circle)) - D * A;
          YS := Y (Center (Circle)) - D * B;
 
-         Self.Points (1) := Create_Point_2D (XS, YS);
+         Self.Points (1) := As_Point_2D (XS, YS);
 
       else
          --  Two intersection points
@@ -294,11 +294,11 @@ package body CGK.Primitives.Analytical_Intersections_2D is
 
          XS := X (Center (Circle)) - D * A - H * B;
          YS := Y (Center (Circle)) - D * B + H * A;
-         Self.Points (1) := Create_Point_2D (XS, YS);
+         Self.Points (1) := As_Point_2D (XS, YS);
 
          XS := X (Center (Circle)) - D * A + H * B;
          YS := Y (Center (Circle)) - D * B - H * A;
-         Self.Points (2) := Create_Point_2D (XS, YS);
+         Self.Points (2) := As_Point_2D (XS, YS);
       end if;
    end Intersect;
 

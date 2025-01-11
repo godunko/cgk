@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -17,11 +17,11 @@ is
 
    type Point_2D is private with Preelaborable_Initialization;
 
-   function Create_Point_2D
+   function As_Point_2D
      (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Point_2D
      with Inline_Always;
 
-   function Create_Point_2D
+   function As_Point_2D
      (XY : CGK.Primitives.XYs.XY) return Point_2D with Inline;
 
    function X (Self : Point_2D) return CGK.Reals.Real with Inline;
@@ -60,5 +60,12 @@ private
    type Point_2D is record
       Coordinates : CGK.Primitives.XYs.XY;
    end record;
+
+   function As_Point_2D
+     (X : CGK.Reals.Real; Y : CGK.Reals.Real) return Point_2D is
+       (Coordinates => CGK.Primitives.XYs.Create_XY (X, Y));
+
+   function As_Point_2D (XY : CGK.Primitives.XYs.XY) return Point_2D is
+     (Coordinates => XY);
 
 end CGK.Primitives.Points_2D;
