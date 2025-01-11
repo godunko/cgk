@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -18,7 +18,8 @@ package CGK.Primitives.Points_3D is
 
    pragma Pure;
 
-   type Point_3D is private;
+   type Point_3D is private
+     with Preelaborable_Initialization;
 
    function As_Point_3D
      (X : CGK.Reals.Real;
