@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2023-2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2023-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -10,9 +10,9 @@ with CGK.Primitives.Circles_2D;
 with CGK.Primitives.Lines_2D;
 with CGK.Primitives.Points_2D.Containers;
 
-package CGK.Primitives.Analytical_Intersections_2D is
-
-   pragma Preelaborate;
+package CGK.Primitives.Analytical_Intersections_2D
+  with Preelaborate
+is
 
    type Analytical_Intersection_2D is private;
 
